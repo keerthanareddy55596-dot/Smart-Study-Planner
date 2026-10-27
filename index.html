@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Study Timetable | Smart Study Planner</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">SMART STUDY PLANNER</p>
+      <h1>Study Timetable</h1>
+      <p class="subtitle">Plan your sessions, stay organized, and make time for every subject.</p>
+    </div>
+    <div class="today-card">
+      <span>Today</span>
+      <strong id="todayLabel">Loading date…</strong>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="stats" aria-label="Timetable summary">
+      <article class="stat-card"><span>Total sessions</span><strong id="totalSessions">0</strong></article>
+      <article class="stat-card"><span>Today's sessions</span><strong id="todaySessions">0</strong></article>
+      <article class="stat-card"><span>Subjects</span><strong id="subjectCount">0</strong></article>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading">
+        <div><p class="eyebrow">YOUR PLAN</p><h2 id="formHeading">Add a study session</h2></div>
+      </div>
+      <form id="sessionForm">
+        <input type="hidden" id="editId">
+        <div class="form-grid">
+          <label>Subject
+            <input id="subject" type="text" placeholder="e.g. Mathematics" maxlength="60" required>
+          </label>
+          <label>Topic
+            <input id="topic" type="text" placeholder="e.g. Algebra practice" maxlength="100" required>
+          </label>
+          <label>Date
+            <input id="date" type="date" required>
+          </label>
+          <label>Start time
+            <input id="startTime" type="time" required>
+          </label>
+          <label>End time
+            <input id="endTime" type="time" required>
+          </label>
+          <label>Study type
+            <select id="studyType">
+              <option>Study</option><option>Revision</option><option>Assignment</option><option>Exam preparation</option>
+            </select>
+          </label>
+        </div>
+        <div class="form-actions">
+          <button class="primary" type="submit" id="submitButton">Add session</button>
+          <button class="secondary hidden" type="button" id="cancelEdit">Cancel edit</button>
+        </div>
+        <p id="formMessage" class="message" role="status"></p>
+      </form>
+    </section>
+
+    <section class="panel">
+      <div class="list-heading">
+        <div><p class="eyebrow">STAY ON TRACK</p><h2>Your schedule</h2></div>
+        <div class="filters">
+          <label class="filter-label" for="filterDate">Filter date</label>
+          <input id="filterDate" type="date">
+          <button class="secondary" id="clearFilter" type="button">Show all</button>
+        </div>
+      </div>
+      <div id="emptyState" class="empty-state">
+        <div class="empty-icon">📚</div>
+        <h3>No study sessions yet</h3>
+        <p>Add your first session using the form above.</p>
+      </div>
+      <div id="sessionList" class="session-list"></div>
+    </section>
+    <p class="footer-note">Your timetable is saved in this browser using local storage.</p>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
